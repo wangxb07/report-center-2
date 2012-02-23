@@ -1,0 +1,27 @@
+<h1>Listing sales_channels</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sales_channels.each do |sales_channel| %>
+  <tr>
+    <td><%= sales_channel.name %></td>
+    <td><%= sales_channel.comment %></td>
+    <td><%= link_to 'Show', sales_channel %></td>
+    <td><%= link_to 'Edit', edit_sales_channel_path(sales_channel) %></td>
+    <td><%= link_to 'Destroy', sales_channel, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Add Api', :controller => "sales_channel_apis", :action => "new", :sales_channel_id => sales_channel %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sales channel', new_sales_channel_path %>

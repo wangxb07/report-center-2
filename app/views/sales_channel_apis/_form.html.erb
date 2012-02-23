@@ -1,0 +1,26 @@
+<%= form_for([@sales_channel, @sales_channel.sales_channel_apis.build]) do |f| %>
+
+  <div class="field">
+    <%= f.label :app_key %><br />
+    <%= f.text_field :app_key %>
+  </div>
+  <div class="field">
+    <%= f.label :app_secret %><br />
+    <%= f.text_field :app_secret %>
+  </div>
+  <div class="field">
+    <%= f.label :session_key %><br />
+    <%= f.text_field :session_key %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :is_enable %><br />
+    <%= f.check_box :is_enable %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

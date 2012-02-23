@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sales_channel.name %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @sales_channel.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_sales_channel_path(@sales_channel) %> |
+<%= link_to 'Back', sales_channels_path %>

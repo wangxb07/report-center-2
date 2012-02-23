@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  app_key: MyString
+  app_secret: MyString
+  session_key: MyString
+  url: MyString
+  is_enable: false
+  sales_channel: 
+
+two:
+  app_key: MyString
+  app_secret: MyString
+  session_key: MyString
+  url: MyString
+  is_enable: false
+  sales_channel: 

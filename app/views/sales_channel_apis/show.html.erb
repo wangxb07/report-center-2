@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App key:</b>
+  <%= @sales_channel_api.app_key %>
+</p>
+
+<p>
+  <b>App secret:</b>
+  <%= @sales_channel_api.app_secret %>
+</p>
+
+<p>
+  <b>Session key:</b>
+  <%= @sales_channel_api.session_key %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @sales_channel_api.url %>
+</p>
+
+<p>
+  <b>Is enable:</b>
+  <%= @sales_channel_api.is_enable %>
+</p>
+
+<p>
+  <b>Sales channel:</b>
+  <%= @sales_channel_api.sales_channel %>
+</p>
+
+
+<%= link_to 'Edit', edit_sales_channel_api_path(@sales_channel_api) %> |
+<%= link_to 'Back', sales_channel_apis_path %>

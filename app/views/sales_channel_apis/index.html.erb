@@ -1,0 +1,33 @@
+<h1>Listing sales_channel_apis</h1>
+
+<table>
+  <tr>
+    <th>App key</th>
+    <th>App secret</th>
+    <th>Session key</th>
+    <th>Url</th>
+    <th>Is enable</th>
+    <th>Sales channel</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sales_channel_apis.each do |sales_channel_api| %>
+  <tr>
+    <td><%= sales_channel_api.app_key %></td>
+    <td><%= sales_channel_api.app_secret %></td>
+    <td><%= sales_channel_api.session_key %></td>
+    <td><%= sales_channel_api.url %></td>
+    <td><%= sales_channel_api.is_enable %></td>
+    <td><%= sales_channel_api.sales_channel %></td>
+    <td><%= link_to 'Show', sales_channel_api %></td>
+    <td><%= link_to 'Edit', edit_sales_channel_api_path(sales_channel_api) %></td>
+    <td><%= link_to 'Destroy', sales_channel_api, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sales channel api', new_sales_channel_api_path %>
