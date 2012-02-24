@@ -4,7 +4,8 @@ class SalesChannelApisController < ApplicationController
   # GET /sales_channel_apis
   # GET /sales_channel_apis.json
   def index
-    @sales_channel_apis = SalesChannelApi.all
+    @sales_channel = SalesChannel.find(params[:sales_channel_id])
+    @sales_channel_apis = @sales_channel.apis
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,11 +28,10 @@ class SalesChannelApisController < ApplicationController
   # GET /sales_channel_apis/new.json
   def new
     @sales_channel = SalesChannel.find(params[:sales_channel_id])
-    # @sales_channel_api = @sales_channel.sales_channel_apis.build
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render :json => @sales_channel_api }
+      format.json { render :json => @sales_channel }
     end
   end
 
@@ -43,7 +43,9 @@ class SalesChannelApisController < ApplicationController
   # POST /sales_channel_apis
   # POST /sales_channel_apis.json
   def create
+    @sales_channel = SalesChannel.find(params[:sales_channel_id])
     @sales_channel_api = SalesChannelApi.new(params[:sales_channel_api])
+    @sales_channel_api.sales_channel = @sales_channel
 
     respond_to do |format|
       if @sales_channel_api.save
