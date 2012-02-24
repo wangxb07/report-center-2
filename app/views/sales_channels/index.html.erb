@@ -17,7 +17,8 @@
     <td><%= link_to 'Show', sales_channel %></td>
     <td><%= link_to 'Edit', edit_sales_channel_path(sales_channel) %></td>
     <td><%= link_to 'Destroy', sales_channel, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Add Api', :controller => "sales_channel_apis", :action => "new", :sales_channel_id => sales_channel %></td>
+    <td><%= link_to 'Add Api', new_sales_channel_sales_channel_api_path(sales_channel) %></td>
+    <td><%= link_to 'List Api', sales_channel_sales_channel_apis_path(sales_channel) %></td>
   </tr>
 <% end %>
 </table>

@@ -20,7 +20,7 @@
     <td><%= sales_channel_api.session_key %></td>
     <td><%= sales_channel_api.url %></td>
     <td><%= sales_channel_api.is_enable %></td>
-    <td><%= sales_channel_api.sales_channel %></td>
+    <td><%= sales_channel_api.sales_channel.name %></td>
     <td><%= link_to 'Show', sales_channel_api %></td>
     <td><%= link_to 'Edit', edit_sales_channel_api_path(sales_channel_api) %></td>
     <td><%= link_to 'Destroy', sales_channel_api, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -30,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Sales channel api', new_sales_channel_api_path %>
+<%= link_to 'New Sales channel api', new_sales_channel_sales_channel_api_path %>

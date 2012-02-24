@@ -1,5 +1,18 @@
-<%= form_for([@sales_channel, @sales_channel.sales_channel_apis.build]) do |f| %>
+<% if @sales_channel_api.nil? %>
+  <% @sales_channel_api = @sales_channel.apis.build %>
+<% end %>
+<%= form_for([@sales_channel, @sales_channel_api]) do |f| %>
+  <% if @sales_channel_api.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sales_channel_api.errors.count, "error") %> prohibited this sales_channel_api from being saved:</h2>
 
+      <ul>
+      <% @sales_channel_api.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :app_key %><br />
     <%= f.text_field :app_key %>
