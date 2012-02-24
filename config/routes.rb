@@ -1,4 +1,8 @@
 ReportCenter::Application.routes.draw do
+  resources :activities
+
+  resources :products
+
   resources :sales_channel_apis
 
   resources :sales_channels do

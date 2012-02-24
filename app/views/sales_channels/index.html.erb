@@ -3,7 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Code</th>
     <th>Comment</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +15,7 @@
 <% @sales_channels.each do |sales_channel| %>
   <tr>
     <td><%= sales_channel.name %></td>
+    <td><%= sales_channel.code %></td>
     <td><%= sales_channel.comment %></td>
     <td><%= link_to 'Show', sales_channel %></td>
     <td><%= link_to 'Edit', edit_sales_channel_path(sales_channel) %></td>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  for_class: MyString
+  starting: 1
+  step: 1
+
+two:
+  for_class: MyString
+  starting: 1
+  step: 1

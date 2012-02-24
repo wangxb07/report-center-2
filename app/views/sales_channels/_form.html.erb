@@ -16,8 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
     <%= f.label :comment %><br />
-    <%= f.text_field :comment %>
+    <%= f.text_area :comment %>
   </div>
   <div class="actions">
     <%= f.submit %>

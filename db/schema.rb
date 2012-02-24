@@ -10,11 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223092053) do
+ActiveRecord::Schema.define(:version => 20120224061423) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "increment_id",                     :null => false
+    t.string   "name",                             :null => false
+    t.datetime "start_time",                       :null => false
+    t.datetime "end_time",                         :null => false
+    t.integer  "order_count",       :default => 0
+    t.integer  "sale_count",        :default => 0
+    t.integer  "sales_channels_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "activities", ["sales_channels_id"], :name => "index_activities_on_sales_channels_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name",                                                       :null => false
+    t.string   "sku",                                                        :null => false
+    t.decimal  "cost_price", :precision => 12, :scale => 3, :default => 0.0
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+  end
 
   create_table "sales_channel_apis", :force => true do |t|
-    t.string   "app_key"
-    t.string   "app_secret"
+    t.string   "app_key",          :null => false
+    t.string   "app_secret",       :null => false
     t.string   "session_key"
     t.string   "url"
     t.boolean  "is_enable"
@@ -26,10 +48,19 @@ ActiveRecord::Schema.define(:version => 20120223092053) do
   add_index "sales_channel_apis", ["sales_channel_id"], :name => "index_sales_channel_apis_on_sales_channel_id"
 
   create_table "sales_channels", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
+    t.string   "code",       :null => false
     t.string   "comment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "system_increments", :force => true do |t|
+    t.string   "for_class",                      :null => false
+    t.integer  "starting",   :default => 100000
+    t.integer  "step",       :default => 1
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "users", :force => true do |t|

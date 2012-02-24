@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>App key:</b>
   <%= @sales_channel_api.app_key %>
@@ -24,12 +22,6 @@
   <b>Is enable:</b>
   <%= @sales_channel_api.is_enable %>
 </p>
-
-<p>
-  <b>Sales channel:</b>
-  <%= @sales_channel_api.sales_channel %>
-</p>
-
 
 <%= link_to 'Edit', edit_sales_channel_api_path(@sales_channel_api) %> |
 <%= link_to 'Back', sales_channel_sales_channel_apis_path(@sales_channel_api.sales_channel) %>
