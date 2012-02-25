@@ -7,5 +7,6 @@ class Activity < ActiveRecord::Base
   validates :start_time, :presence => true
   validates :end_time, :presence => true
 
-  belongs_to :sales_channels
+  belongs_to :sales_channel
+  validates_presence_of :sales_channel
 end

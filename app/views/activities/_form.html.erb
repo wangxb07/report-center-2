@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :increment_id %><br />
-    <%= f.number_field :increment_id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -29,9 +25,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :sales_channels %><br />
-    <%= f.text_field :sales_channels %>
+    <div id="sales-channels-dropdown">
+      <%=select :activity, :sales_channel, [['Please select', '0']] | SalesChannel.all.collect { |sales_channel| [sales_channel.name, sales_channel.id] } %>
+    </div>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

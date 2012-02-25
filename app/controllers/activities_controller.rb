@@ -41,6 +41,7 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
+#    @sales_channel = SalesChannel.find(params[:sales_channel])
     @activity = Activity.new(params[:activity])
 
     respond_to do |format|
