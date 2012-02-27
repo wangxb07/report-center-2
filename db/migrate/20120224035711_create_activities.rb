@@ -7,10 +7,10 @@ class CreateActivities < ActiveRecord::Migration
       t.datetime :end_time, :null => false
       t.integer :order_count, :default => 0
       t.integer :sale_count, :default => 0
-      t.references :sales_channels
+      t.references :sales_channel
 
       t.timestamps
     end
-    add_index :activities, :sales_channels_id
+    add_index :activities, :sales_channel_id
   end
 end

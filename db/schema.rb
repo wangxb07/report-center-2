@@ -10,21 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120224061423) do
+ActiveRecord::Schema.define(:version => 20120227005500) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "increment_id",                     :null => false
-    t.string   "name",                             :null => false
-    t.datetime "start_time",                       :null => false
-    t.datetime "end_time",                         :null => false
-    t.integer  "order_count",       :default => 0
-    t.integer  "sale_count",        :default => 0
-    t.integer  "sales_channels_id"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.integer  "increment_id",                    :null => false
+    t.string   "name",                            :null => false
+    t.datetime "start_time",                      :null => false
+    t.datetime "end_time",                        :null => false
+    t.integer  "order_count",      :default => 0
+    t.integer  "sale_count",       :default => 0
+    t.integer  "sales_channel_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
-  add_index "activities", ["sales_channels_id"], :name => "index_activities_on_sales_channels_id"
+  add_index "activities", ["sales_channel_id"], :name => "index_activities_on_sales_channel_id"
+
+  create_table "activity_products", :force => true do |t|
+    t.string   "outer_sku",                                                      :null => false
+    t.decimal  "activity_price", :precision => 12, :scale => 3, :default => 0.0
+    t.text     "content"
+    t.integer  "activity_id"
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+  end
+
+  add_index "activity_products", ["activity_id"], :name => "index_activity_products_on_activity_id"
 
   create_table "products", :force => true do |t|
     t.string   "name",                                                       :null => false
