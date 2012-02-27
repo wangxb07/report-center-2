@@ -1,0 +1,24 @@
+<%= form_for(@product_outer_mapping) do |f| %>
+  <% if @product_outer_mapping.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_outer_mapping.errors.count, "error") %> prohibited this product_outer_mapping from being saved:</h2>
+
+      <ul>
+      <% @product_outer_mapping.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :outer_sku %>
+    <%= f.text_field :outer_sku %>
+  </div>
+
+  <div class="field">
+    <%= render :partial => "sales_channel_apis/widget_api_select", :locals => { :form => f } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
