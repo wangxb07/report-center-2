@@ -1,0 +1,18 @@
+<%= form.fields_for :products do |product_form| %>
+  <div class="field">
+    <%= product_form.label :outer_sku %>
+    <%= product_form.text_field :outer_sku %>
+  </div>
+
+  <div class="field">
+    <%= product_form.label :activity_price %>
+    <%= product_form.text_field :activity_price %>
+  </div>
+
+  <% unless product_form.object.nil? || product_form.object.new_record? %>
+    <div class="field">
+      <%= product_form.label :_destroy, 'Remove:' %>
+      <%= product_form.check_box :_destroy %>
+    </div>
+  <% end %>
+<% end %>
