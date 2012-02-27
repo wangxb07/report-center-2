@@ -1,18 +1,16 @@
 ReportCenter::Application.routes.draw do
+  get "home/index"
+  root :to => "home#index"
+
   resources :activities
-
   resources :products
-
   resources :sales_channel_apis
-
   resources :sales_channels do
     resources :sales_channel_apis
   end
-
-  get "home/index"
+  resources :product_outer_mappings
 
   devise_for :users
-  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

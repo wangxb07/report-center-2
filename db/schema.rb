@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227005500) do
+ActiveRecord::Schema.define(:version => 20120227055104) do
 
   create_table "activities", :force => true do |t|
     t.integer  "increment_id",                    :null => false
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(:version => 20120227005500) do
   end
 
   add_index "activity_products", ["activity_id"], :name => "index_activity_products_on_activity_id"
+
+  create_table "product_outer_mappings", :force => true do |t|
+    t.string   "outer_sku",            :null => false
+    t.integer  "product_id"
+    t.integer  "sales_channel_api_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "product_outer_mappings", ["product_id"], :name => "index_product_outer_mappings_on_product_id"
+  add_index "product_outer_mappings", ["sales_channel_api_id"], :name => "index_product_outer_mappings_on_sales_channel_api_id"
 
   create_table "products", :force => true do |t|
     t.string   "name",                                                       :null => false

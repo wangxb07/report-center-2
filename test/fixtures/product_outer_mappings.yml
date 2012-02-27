@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  outer_sku: MyString
+  product: 
+  sales_channel_api: 
+
+two:
+  outer_sku: MyString
+  product: 
+  sales_channel_api: 
