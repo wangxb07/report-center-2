@@ -1,3 +1,4 @@
+<% @activity.products.build %>
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
@@ -26,10 +27,14 @@
 
   <div class="field">
     <div id="sales-channels-dropdown">
-      <%=select :activity, :sales_channel, [['Please select', '0']] | SalesChannel.all.collect { |sales_channel| [sales_channel.name, sales_channel.id] } %>
+      <%=select :activity, :sales_channel_id, [['Please select', '0']] | SalesChannel.all.collect { |sales_channel| [sales_channel.name, sales_channel.id] } %>
     </div>
   </div>
 
+  <h2>Products</h2>
+  <div class="products-form">
+  <%= render :partial => 'activity_products/form', :locals => {:form => f} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

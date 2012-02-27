@@ -30,9 +30,16 @@
 
 <p>
   <b>Sales channels:</b>
-  <%= @activity.sales_channels %>
+  <%= @activity.sales_channel.name %>
 </p>
 
+<p>
+  <b>Products</b>
+  <% @activity.products.each do |product| %>
+  <label>Outer Sku: <%= product.outer_sku %></label>
+  <label>Activity Price: <%= product.activity_price %></label>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>
