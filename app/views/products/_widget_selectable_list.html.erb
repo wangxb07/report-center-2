@@ -1,0 +1,34 @@
+<div id="product-list">
+  <%= form.hidden_field :product_id %>
+  <table width="100%" cellspacing="1" cellpadding="1" border="1">
+    <tr>
+      <th>Name</th>
+      <th>Sku</th>
+      <th>Cost price</th>
+      <th></th>
+    </tr>
+    <% Product.all.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.sku %></td>
+      <td><%= product.cost_price %></td>
+      <td><a href="javascript:void(0)" productId="<%= product.id %>" class="select-link">Select</a></td>
+      <% end %>
+  </table>
+
+</div>
+<script type="text/javascript">
+<!--
+$(document).ready(
+  function() {
+    $("#product-list").find(".select-link").click(
+      function() {
+        $("#product-list").find("tr").css("background-color", "");
+        $(this).parent().parent().css("background-color", "red");
+        $("#product-list").find("input[type=hidden]").val($(this).attr("productId"));
+      }
+    )
+  }
+)
+-->
+</script>

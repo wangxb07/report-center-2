@@ -1,18 +1,7 @@
-<div>
+<div class="api-select">
   <%=select_tag "sales_channel_id", options_from_collection_for_select(SalesChannel.all, "id", "name"), :prompt => "Select..." %>
-  <%=select_tag "sales_channel_api_id", [], :prompt => "Select sales channel..." %>
+  <%=form.select :sales_channel_api_id, [], :prompt => "Select sales channel..." %>
 </div>
-
 <script type="text/javascript">
-  $(document).ready(function() {
-  $("#sales_channel_id").change(function() {
-  console.log("test");
-  $.ajax({
-  url: '/sales_channels/'+this.value+'/sales_channel_apis.json',
-  success: function(resp) {
-  console.log("test");
-  }
-  })
-  })
-  });
+  var sales_channel_apis_url = "<%= sales_channel_apis_path %>.json";
 </script>

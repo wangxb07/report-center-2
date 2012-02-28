@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>outer sku</th>
-    <th>sales channel</th>
     <th>app key</th>
+    <th>sales channel</th>
     <th>product sku</th>
     <th></th>
     <th></th>
@@ -14,9 +14,14 @@
 <% @product_outer_mappings.each do |product_outer_mapping| %>
   <tr>
     <td><%= product_outer_mapping.outer_sku %></td>
-    <td><%= product_outer_mapping.sales_channel_api.sales_channel.name %></td>
+    <% if product_outer_mapping.sales_channel_api.nil? %>
+    <td></td>
+    <td></td>
+    <% else %>
     <td><%= product_outer_mapping.sales_channel_api.app_key %></td>
-    <td><%= product_outer_mapping.product.sku %></td>
+    <td><%= product_outer_mapping.sales_channel_api.sales_channel.name if not product_outer_mapping.sales_channel_api.sales_channel.nil? %></td>
+    <% end %>
+    <td><%= product_outer_mapping.product.sku if not product_outer_mapping.product.nil? %></td>
     <td><%= link_to 'Show', product_outer_mapping %></td>
     <td><%= link_to 'Edit', edit_product_outer_mapping_path(product_outer_mapping) %></td>
     <td><%= link_to 'Destroy', product_outer_mapping, :confirm => 'Are you sure?', :method => :delete %></td>

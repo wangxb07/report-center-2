@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Name</th>
     <th>App key</th>
     <th>App secret</th>
     <th>Session key</th>
@@ -15,6 +16,7 @@
 
 <% @sales_channel_apis.each do |sales_channel_api| %>
   <tr>
+    <td><%= sales_channel_api.name %></td>
     <td><%= sales_channel_api.app_key %></td>
     <td><%= sales_channel_api.app_secret %></td>
     <td><%= sales_channel_api.session_key %></td>

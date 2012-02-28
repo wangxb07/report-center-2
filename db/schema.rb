@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227055104) do
+ActiveRecord::Schema.define(:version => 20120228061303) do
 
   create_table "activities", :force => true do |t|
     t.integer  "increment_id",                    :null => false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120227055104) do
     t.integer  "sales_channel_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "name"
   end
 
   add_index "sales_channel_apis", ["sales_channel_id"], :name => "index_sales_channel_apis_on_sales_channel_id"

@@ -15,8 +15,11 @@
     <%= f.text_field :outer_sku %>
   </div>
 
-  <div class="field">
+  <div>
     <%= render :partial => "sales_channel_apis/widget_api_select", :locals => { :form => f } %>
+  </div>
+  <div class="add-product">
+    <%= render :partial => "products/widget_selectable_list", :locals => { :form => f } %>
   </div>
   <div class="actions">
     <%= f.submit %>
