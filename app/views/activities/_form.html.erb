@@ -32,9 +32,8 @@
   </div>
 
   <h2>Products</h2>
-  <div class="products-form">
-  <%= render :partial => 'activity_products/form', :locals => {:form => f} %>
-  </div>
+  <%= render :partial => "activity_products/form", :locals => { :form => f } %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

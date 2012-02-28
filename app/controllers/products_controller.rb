@@ -81,4 +81,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    @products = Product.where("sku = ?", params[:sku])
+
+    respond_to do |format|
+      format.json { render :json => @products }
+    end
+  end
 end

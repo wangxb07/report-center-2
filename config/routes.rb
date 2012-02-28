@@ -3,7 +3,11 @@ ReportCenter::Application.routes.draw do
   root :to => "home#index"
 
   resources :activities
-  resources :products
+  resources :products do
+    collection do
+      get :search
+    end
+  end
   resources :sales_channel_apis
   resources :sales_channels do
     resources :sales_channel_apis

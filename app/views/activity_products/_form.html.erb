@@ -1,18 +1,66 @@
 <%= form.fields_for :products do |product_form| %>
-  <div class="field">
-    <%= product_form.label :outer_sku %>
-    <%= product_form.text_field :outer_sku %>
-  </div>
-
-  <div class="field">
-    <%= product_form.label :activity_price %>
-    <%= product_form.text_field :activity_price %>
-  </div>
-
-  <% unless product_form.object.nil? || product_form.object.new_record? %>
-    <div class="field">
-      <%= product_form.label :_destroy, 'Remove:' %>
-      <%= product_form.check_box :_destroy %>
+<div class="products-form">
+  <div>
+    <%= text_field_tag :sku %>
+    <button type="button" id="add-button">Add</button>
+    <div class="search-msg">
+      
     </div>
-  <% end %>
+    <div id="added-product-list">
+      <table width="100%" cellspacing="1" cellpadding="1" border="1">
+        <tr>
+          <th>Name</th>
+          <th>Sku</th>
+          <th>Cost price</th>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  <!-- 
+insert_new_product = function(product) {
+
+  var sku_column = $('<div><%= product_form.text_field :outer_sku %></div>');
+  var cost_price_column = $('<div><%= product_form.text_field :activity_price %></div>');
+
+// TODO 设置数据到对象无效
+  $sku_column.find("input").get(0).value = product.sku;
+//  sku_column.find("input").get(0).val(product.sku);
+//  sku_column.find("input").get(0).attr("readonly", true);
+//  cost_price_column.find("input").get(0).val(product.cost_price);
+
+  var row_arr = [product.name, sku_column.html(), cost_price_column.html()];
+  $("#added-product-list").find("table")
+    .append("<tr><td>" + row_arr.join("</td><td>")+ "</td></tr>");
+  return true;
+}
+
+$(document).ready(
+  function() {
+    $("#add-button").click(
+      function() {
+        $(".search-msg").html("searching...");
+        $.ajax(
+          {
+            url: "<%= search_products_path %>?sku=" + $(this).prev("input").val(),
+            success: function(data) {
+              if (data.length == 0) {
+                $(".search-msg").html("nothing find.");
+                return false;
+              }
+              if (insert_new_product(data[0])) {
+                $(".search-msg").html("new row inserted");
+              }
+            }
+          }
+        );
+      }
+    )
+  }
+)
+    -->
+</script>
 <% end %>
