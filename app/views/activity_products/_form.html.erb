@@ -21,22 +21,61 @@
 
 <script type="text/javascript">
   <!-- 
+var c_index = 0;
+replace_index = function(html) {
+  html = html.replace(/\[0\]/i, "[" + c_index + "]");
+  html = html.replace(/_0_/i, "_" + c_index + "_");
+  return html;
+};
+
 insert_new_product = function(product) {
+  
+  var sku_column_html = '<div><%= product_form.text_field :outer_sku %></div>';
+  var cost_price_html = '<div><%= product_form.text_field :activity_price %></div>';
 
-  var sku_column = $('<div><%= product_form.text_field :outer_sku %></div>');
-  var cost_price_column = $('<div><%= product_form.text_field :activity_price %></div>');
+  // 替换input的名称中的序号xxx[xx][0][xxx],替换中间的[0]到当前序号
+  sku_column_html = replace_index(sku_column_html);
+  cost_price_html = replace_index(cost_price_html);
 
-// TODO 设置数据到对象无效
-  $sku_column.find("input").get(0).value = product.sku;
-//  sku_column.find("input").get(0).val(product.sku);
-//  sku_column.find("input").get(0).attr("readonly", true);
-//  cost_price_column.find("input").get(0).val(product.cost_price);
+  c_index += 1;
+
+  // 生成对应的jquery object
+  var sku_column = $(sku_column_html);
+  var cost_price_column = $(cost_price_html);
+  var delete_link = $("<a href=\"javascript:void(0);\">Delete</a>");
+
+  // 设置对应的值
+  sku_column.find("input").attr("value", product.sku);
+  sku_column.find("input").attr("readonly", true);
+  cost_price_column.find("input").attr("value", product.cost_price);
+
+  // bind event
+  delete_link.click(function() {
+    $(this).parent("tr").remove();
+  });
 
   var row_arr = [product.name, sku_column.html(), cost_price_column.html()];
   $("#added-product-list").find("table")
     .append("<tr><td>" + row_arr.join("</td><td>")+ "</td></tr>");
+
+  $("#added-product-list").find("table tbody").children().last().append(delete_link);
   return true;
-}
+};
+
+check_is_added = function(sku) {
+  var is_added = false;
+
+  console.log($("#added-product-list")
+              .find("input[type=text][name~=products]"));
+  $("#added-product-list")
+    .find("input[type=text][name*='outer_sku']").each(function (index, item) {
+      console.log(item);
+      if (item.value == sku) {
+        is_added = true;
+      }
+    });
+  return is_added;
+};
 
 $(document).ready(
   function() {
@@ -49,6 +88,10 @@ $(document).ready(
             success: function(data) {
               if (data.length == 0) {
                 $(".search-msg").html("nothing find.");
+                return false;
+              }
+              if (check_is_added(data[0].sku)) {
+                $(".search-msg").html("sku already existed.");
                 return false;
               }
               if (insert_new_product(data[0])) {

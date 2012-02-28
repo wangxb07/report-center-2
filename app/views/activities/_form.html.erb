@@ -1,4 +1,4 @@
-<% @activity.products.build %>
+<% @activity.products.build if @activity.products.count == 0 %>
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
