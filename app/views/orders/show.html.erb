@@ -1,0 +1,100 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Increment:</b>
+  <%= @order.increment_id %>
+</p>
+
+<p>
+  <b>Customer name:</b>
+  <%= @order.customer_name %>
+</p>
+
+<p>
+  <b>Payment:</b>
+  <%= @order.payment %>
+</p>
+
+<p>
+  <b>Total amount:</b>
+  <%= @order.total_amount %>
+</p>
+
+<p>
+  <b>Sale time:</b>
+  <%= @order.sale_time %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @order.status %>
+</p>
+
+<p>
+  <b>Sale count:</b>
+  <%= @order.sale_count %>
+</p>
+
+<p>
+  <b>Sku count:</b>
+  <%= @order.sku_count %>
+</p>
+
+<p>
+  <b>Receiver name:</b>
+  <%= @order.receiver_name %>
+</p>
+
+<p>
+  <b>Receiver state:</b>
+  <%= @order.receiver_state %>
+</p>
+
+<p>
+  <b>Receiver city:</b>
+  <%= @order.receiver_city %>
+</p>
+
+<p>
+  <b>Receiver district:</b>
+  <%= @order.receiver_district %>
+</p>
+
+<p>
+  <b>Receiver zip:</b>
+  <%= @order.receiver_zip %>
+</p>
+
+<p>
+  <b>Receiver address:</b>
+  <%= @order.receiver_address %>
+</p>
+
+<p>
+  <b>Is receiver info complete:</b>
+  <%= @order.is_receiver_info_complete %>
+</p>
+
+<p>
+  <b>Outer iid:</b>
+  <%= @order.outer_iid %>
+</p>
+
+<p>
+  <b>Buyer memo:</b>
+  <%= @order.buyer_memo %>
+</p>
+
+<p>
+  <b>Sales channel api:</b>
+  <%= @order.sales_channel_api %>
+</p>
+
+<p>
+  <b>Activity:</b>
+  <%= @order.activity %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

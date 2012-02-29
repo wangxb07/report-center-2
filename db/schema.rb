@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229020531) do
+ActiveRecord::Schema.define(:version => 20120229062121) do
 
   create_table "activities", :force => true do |t|
     t.integer  "increment_id",                    :null => false
@@ -37,6 +37,33 @@ ActiveRecord::Schema.define(:version => 20120229020531) do
   end
 
   add_index "activity_products", ["activity_id"], :name => "index_activity_products_on_activity_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "increment_id",                                                                :null => false
+    t.string   "customer_name",                                                               :null => false
+    t.decimal  "payment",                   :precision => 10, :scale => 0, :default => 0
+    t.decimal  "total_amount",              :precision => 10, :scale => 0, :default => 0
+    t.datetime "sale_time"
+    t.integer  "status",                                                   :default => 0
+    t.integer  "sale_count"
+    t.integer  "sku_count"
+    t.string   "receiver_name"
+    t.string   "receiver_state"
+    t.string   "receiver_city"
+    t.string   "receiver_district"
+    t.string   "receiver_zip"
+    t.string   "receiver_address"
+    t.boolean  "is_receiver_info_complete",                                :default => false
+    t.string   "outer_iid",                                                                   :null => false
+    t.text     "buyer_memo"
+    t.integer  "sales_channel_api_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",                                                                  :null => false
+    t.datetime "updated_at",                                                                  :null => false
+  end
+
+  add_index "orders", ["activity_id"], :name => "index_orders_on_activity_id"
+  add_index "orders", ["sales_channel_api_id"], :name => "index_orders_on_sales_channel_api_id"
 
   create_table "product_outer_mappings", :force => true do |t|
     t.string   "outer_sku",            :null => false

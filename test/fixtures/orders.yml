@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  increment_id: 1
+  customer_name: MyString
+  payment: 9.99
+  total_amount: 9.99
+  sale_time: 2012-02-29 14:21:21
+  status: 1
+  sale_count: 1
+  sku_count: 1
+  receiver_name: MyString
+  receiver_state: MyString
+  receiver_city: MyString
+  receiver_district: MyString
+  receiver_zip: MyString
+  receiver_address: MyString
+  is_receiver_info_complete: false
+  outer_iid: MyString
+  buyer_memo: MyText
+  sales_channel_api: 
+  activity: 
+
+two:
+  increment_id: 1
+  customer_name: MyString
+  payment: 9.99
+  total_amount: 9.99
+  sale_time: 2012-02-29 14:21:21
+  status: 1
+  sale_count: 1
+  sku_count: 1
+  receiver_name: MyString
+  receiver_state: MyString
+  receiver_city: MyString
+  receiver_district: MyString
+  receiver_zip: MyString
+  receiver_address: MyString
+  is_receiver_info_complete: false
+  outer_iid: MyString
+  buyer_memo: MyText
+  sales_channel_api: 
+  activity: 

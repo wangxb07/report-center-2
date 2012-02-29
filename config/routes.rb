@@ -1,4 +1,6 @@
 ReportCenter::Application.routes.draw do
+  resources :orders
+
   get "home/index"
   root :to => "home#index"
 

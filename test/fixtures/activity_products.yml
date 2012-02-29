@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  outer_sku: MyString
+  outer_sku: test11
   activity_price: 9.99
-  content: MyText
-  activity: 
+  content: MyText 1
+  activity_id: 1
 
 two:
-  outer_sku: MyString
+  outer_sku: test22
   activity_price: 9.99
-  content: MyText
-  activity: 
+  content: MyText 1
+  activity_id: 2

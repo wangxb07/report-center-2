@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  sku: MyString
+  name: 西班牙DOC皇家菲度干红葡萄酒
+  sku: 011010001
   cost_price: 9.99
 
 two:
-  name: MyString
-  sku: MyString
+  name: 西班牙DO阿扎达
+  sku: 011010002
   cost_price: 9.99

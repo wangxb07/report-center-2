@@ -1,0 +1,59 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>Increment</th>
+    <th>Customer name</th>
+    <th>Payment</th>
+    <th>Total amount</th>
+    <th>Sale time</th>
+    <th>Status</th>
+    <th>Sale count</th>
+    <th>Sku count</th>
+    <th>Receiver name</th>
+    <th>Receiver state</th>
+    <th>Receiver city</th>
+    <th>Receiver district</th>
+    <th>Receiver zip</th>
+    <th>Receiver address</th>
+    <th>Is receiver info complete</th>
+    <th>Outer iid</th>
+    <th>Buyer memo</th>
+    <th>Sales channel api</th>
+    <th>Activity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.increment_id %></td>
+    <td><%= order.customer_name %></td>
+    <td><%= order.payment %></td>
+    <td><%= order.total_amount %></td>
+    <td><%= order.sale_time %></td>
+    <td><%= order.status %></td>
+    <td><%= order.sale_count %></td>
+    <td><%= order.sku_count %></td>
+    <td><%= order.receiver_name %></td>
+    <td><%= order.receiver_state %></td>
+    <td><%= order.receiver_city %></td>
+    <td><%= order.receiver_district %></td>
+    <td><%= order.receiver_zip %></td>
+    <td><%= order.receiver_address %></td>
+    <td><%= order.is_receiver_info_complete %></td>
+    <td><%= order.outer_iid %></td>
+    <td><%= order.buyer_memo %></td>
+    <td><%= order.sales_channel_api %></td>
+    <td><%= order.activity %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_order_path %>

@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  increment_id: 1
-  name: MyString
+  increment_id: 100001
+  name: taobao
   start_time: 2012-02-24 11:57:11
   end_time: 2012-02-24 11:57:11
   order_count: 1
   sale_count: 1
-  sales_channels: 
+  sales_channel_id: 1
 
 two:
-  increment_id: 1
-  name: MyString
+  increment_id: 100002
+  name: jingdong
   start_time: 2012-02-24 11:57:11
   end_time: 2012-02-24 11:57:11
   order_count: 1
   sale_count: 1
-  sales_channels: 
+  sales_channel_id: 2

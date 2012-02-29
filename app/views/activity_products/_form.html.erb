@@ -27,7 +27,7 @@
           <td><%= product_form.text_field :name %></td>
           <% end %>
           <td><%= product_form.text_field :outer_sku, :readonly => true %></td>
-          <td><%= product_form.text_field :activity_price %></td>
+          <td><%= product_form.number_field :activity_price %></td>
           <td><%= product_form.text_field :content %></td>
           <td>
             <%= product_form.label :_destroy, 'Remove: ' %>
@@ -47,7 +47,7 @@
 
 var name_html = '<div><%= @last_product_form.text_field :name %></div>';
 var sku_column_html = '<div><%= @last_product_form.text_field :outer_sku %></div>';
-var cost_price_html = '<div><%= @last_product_form.text_field :activity_price %></div>';
+var cost_price_html = '<div><%= @last_product_form.number_field :activity_price %></div>';
 var content_html = '<div><%= @last_product_form.text_field :content %></div>';
 
 var c_index = 0;

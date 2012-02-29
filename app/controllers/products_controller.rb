@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ProductsController < ApplicationController
   before_filter :authenticate_user!
   # GET /products
@@ -84,6 +85,7 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.where("sku = ?", params[:sku])
+    # TODO 可以根据产品名，进行搜索
 
     respond_to do |format|
       format.json { render :json => @products }
