@@ -1,4 +1,4 @@
-<%= form.fields_for :products do |product_form| %>
+
 <div class="products-form">
   <div>
     <%= text_field_tag :sku %>
@@ -12,8 +12,31 @@
           <th>Name</th>
           <th>Sku</th>
           <th>Cost price</th>
+          <th>Content</th>
           <th></th>
         </tr>
+
+        <%= form.fields_for :products do |product_form| %>
+        <% @last_product_form = product_form %>
+
+        <% unless product_form.object.nil? || product_form.object.outer_sku.nil? || product_form.object.new_record? && request.get? %>
+        <tr>
+          <% if request.get? %>
+          <td><%= product_form.text_field :name, :readonly => true %></td>
+          <% else %>
+          <td><%= product_form.text_field :name %></td>
+          <% end %>
+          <td><%= product_form.text_field :outer_sku, :readonly => true %></td>
+          <td><%= product_form.text_field :activity_price %></td>
+          <td><%= product_form.text_field :content %></td>
+          <td>
+            <%= product_form.label :_destroy, 'Remove: ' %>
+            <%= product_form.check_box :_destroy %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% end %>
       </table>
     </div>
   </div>
@@ -21,55 +44,80 @@
 
 <script type="text/javascript">
   <!-- 
+
+var name_html = '<div><%= @last_product_form.text_field :name %></div>';
+var sku_column_html = '<div><%= @last_product_form.text_field :outer_sku %></div>';
+var cost_price_html = '<div><%= @last_product_form.text_field :activity_price %></div>';
+var content_html = '<div><%= @last_product_form.text_field :content %></div>';
+
 var c_index = 0;
+
 replace_index = function(html) {
-  html = html.replace(/\[0\]/i, "[" + c_index + "]");
-  html = html.replace(/_0_/i, "_" + c_index + "_");
+  var reg_name = /\[(\d+)\]/;
+  var reg_id = /\[(\d+)\]/;
+
+  if (c_index == 0) {
+    c_index = parseInt($(reg_name.exec(html)).get(1));
+    c_index ++ ;
+  }
+
+  html = html.replace(/\[\d+\]/i, "[" + c_index + "]");
+  html = html.replace(/_\d+_/i, "_" + c_index + "_");
+
   return html;
 };
 
 insert_new_product = function(product) {
-  
-  var sku_column_html = '<div><%= product_form.text_field :outer_sku %></div>';
-  var cost_price_html = '<div><%= product_form.text_field :activity_price %></div>';
-
   // 替换input的名称中的序号xxx[xx][0][xxx],替换中间的[0]到当前序号
+  name_html = replace_index(name_html);
   sku_column_html = replace_index(sku_column_html);
   cost_price_html = replace_index(cost_price_html);
-
-  c_index += 1;
+  content_html = replace_index(content_html);
 
   // 生成对应的jquery object
+  var name_column = $(name_html);
   var sku_column = $(sku_column_html);
   var cost_price_column = $(cost_price_html);
+  var content_column = $(content_html);
   var delete_link = $("<a href=\"javascript:void(0);\">Delete</a>");
 
   // 设置对应的值
+  name_column.find("input").attr("value", product.name);
   sku_column.find("input").attr("value", product.sku);
   sku_column.find("input").attr("readonly", true);
   cost_price_column.find("input").attr("value", product.cost_price);
-
+  content_column.find("input").attr("value", "");
+  
   // bind event
   delete_link.click(function() {
     $(this).parent("tr").remove();
   });
 
-  var row_arr = [product.name, sku_column.html(), cost_price_column.html()];
+  var row_arr = [
+    name_column.html(), 
+    sku_column.html(), 
+    cost_price_column.html(),
+    content_column.html()
+  ];
+  
   $("#added-product-list").find("table")
     .append("<tr><td>" + row_arr.join("</td><td>")+ "</td></tr>");
+  // 添加删除按钮到最后一个新行
+  $("#added-product-list").find("table tbody")
+    .children().last().append(delete_link);
+  // 移除报错的样式
+  $("#added-product-list").find("table tbody")
+    .children().last().find("div").removeClass("field_with_errors");
 
-  $("#added-product-list").find("table tbody").children().last().append(delete_link);
+  c_index ++ ;
   return true;
 };
 
 check_is_added = function(sku) {
   var is_added = false;
 
-  console.log($("#added-product-list")
-              .find("input[type=text][name~=products]"));
   $("#added-product-list")
     .find("input[type=text][name*='outer_sku']").each(function (index, item) {
-      console.log(item);
       if (item.value == sku) {
         is_added = true;
       }
@@ -106,4 +154,4 @@ $(document).ready(
 )
     -->
 </script>
-<% end %>
+

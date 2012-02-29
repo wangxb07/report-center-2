@@ -1,4 +1,5 @@
 class ActivityProduct < ActiveRecord::Base
+  validates :name, :presence => true, :length => 2..255
   validates :outer_sku, :presence => true, :length => 2..255
   validates :activity_price, :numericality => true
 
