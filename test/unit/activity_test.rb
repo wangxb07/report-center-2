@@ -30,8 +30,8 @@ class ActivityTest < ActiveSupport::TestCase
            activity_first.errors.full_message(:sales_channel, "can't be blank"))
 
     activity_first.products_attributes = [
-      { :outer_sku => "1001111", :activity_price => "10" },
-      { :outer_sku => "1000222222" }
+      { :outer_sku => "1001111", :activity_price => "10", :name => "test" },
+      { :outer_sku => "1000222222", :name => "test2" }
     ]
 
     activity_first.sales_channel = SalesChannel.new
