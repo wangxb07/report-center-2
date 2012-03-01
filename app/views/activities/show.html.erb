@@ -30,7 +30,7 @@
 
 <p>
   <b>Sales channels:</b>
-  <%= @activity.sales_channel.name %>
+  <%= @activity.sales_channel.name if not @activity.sales_channel.nil? %>
 </p>
 
 <p>

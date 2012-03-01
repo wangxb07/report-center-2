@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SalesChannelsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @sales_channel = sales_channels(:one)
   end
 

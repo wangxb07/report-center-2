@@ -1,4 +1,5 @@
 class ProductOuterMappingsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /product_outer_mappings
   # GET /product_outer_mappings.json
   def index

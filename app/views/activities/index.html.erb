@@ -22,7 +22,7 @@
     <td><%= activity.end_time %></td>
     <td><%= activity.order_count %></td>
     <td><%= activity.sale_count %></td>
-    <td><%= activity.sales_channel.name %></td>
+    <td><%= activity.sales_channel.name if not activity.sales_channel.nil? %></td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>

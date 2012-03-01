@@ -15,5 +15,4 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
-  sign_in :user, @user
 end

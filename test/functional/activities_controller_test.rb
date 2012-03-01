@@ -2,9 +2,9 @@
 require 'test_helper'
 
 class ActivitiesControllerTest < ActionController::TestCase
-  sign_in :user, @user
 
   setup do
+    sign_in users(:one)
     @activity = activities(:one)
   end
 
@@ -21,7 +21,7 @@ class ActivitiesControllerTest < ActionController::TestCase
 
   test "should create activity" do
     assert_difference('Activity.count') do
-      @activity.product_attributes = [
+      @activity.products_attributes = [
         { :outer_sku => "11222", :name => "红酒 wine", :activity_price => 10.01 }
       ]
       post :create, :activity => @activity.attributes

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ProductOuterMappingsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @product_outer_mapping = product_outer_mappings(:one)
   end
 

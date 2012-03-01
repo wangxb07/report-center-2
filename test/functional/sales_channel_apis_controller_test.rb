@@ -2,23 +2,24 @@ require 'test_helper'
 
 class SalesChannelApisControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @sales_channel_api = sales_channel_apis(:one)
   end
 
   test "should get index" do
-    get :index
+    get :index, :sales_channel_id => sales_channels(:one).id
     assert_response :success
     assert_not_nil assigns(:sales_channel_apis)
   end
 
   test "should get new" do
-    get :new
+    get :new, :sales_channel_id => sales_channels(:one).id
     assert_response :success
   end
 
   test "should create sales_channel_api" do
     assert_difference('SalesChannelApi.count') do
-      post :create, :sales_channel_api => @sales_channel_api.attributes
+      post :create, :sales_channel_api => @sales_channel_api.attributes, :sales_channel_id => sales_channels(:one).id
     end
 
     assert_redirected_to sales_channel_api_path(assigns(:sales_channel_api))

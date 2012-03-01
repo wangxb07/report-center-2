@@ -1,19 +1,25 @@
 ReportCenter::Application.routes.draw do
-  resources :orders
+
 
   get "home/index"
   root :to => "home#index"
 
   resources :activities
+
   resources :products do
     collection do
       get :search
     end
   end
-  resources :sales_channel_apis
+
+  resources :orders
+
   resources :sales_channels do
     resources :sales_channel_apis
   end
+
+  resources :sales_channel_apis
+
   resources :product_outer_mappings
 
   devise_for :users
