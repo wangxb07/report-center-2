@@ -21,10 +21,16 @@ class ActivitiesControllerTest < ActionController::TestCase
 
   test "should create activity" do
     assert_difference('Activity.count') do
+      # TODO 
       @activity.products_attributes = [
         { :outer_sku => "11222", :name => "红酒 wine", :activity_price => 10.01 }
       ]
-      post :create, :activity => @activity.attributes
+      post_params = @activity.attributes
+      post_params[:products_attributes] = [
+          { :outer_sku => "11222", :name => "红酒 wine", :activity_price => 10.01 }
+      ]
+      post_params[:sales_channel_id] = sales_channels(:one)
+      post :create, :activity => post_params
     end
 
     assert_redirected_to activity_path(assigns(:activity))
